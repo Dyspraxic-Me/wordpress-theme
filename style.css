@@ -488,6 +488,8 @@ footer {
 	padding-bottom: var(--space-l);
 	font-size: var(--size--1);
 	background: var(--footer-background-color);
+	/* If the content is small overflow the background to fill the page */
+	box-shadow: 0 100vh 0px 100vh var(--footer-background-color);
 
 
 	a {
