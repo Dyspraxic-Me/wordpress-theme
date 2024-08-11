@@ -146,7 +146,13 @@ h6 {
 	margin-bottom: 0.5em;
 	color: var(--heading-color);
 	letter-spacing: -0.015em;
+}
 
+h2,
+h3,
+h4,
+h5,
+h6 {
 	&,
 	+* {
 		margin-top: 0;
@@ -244,6 +250,10 @@ header {
 			&,
 			&:visited {
 				color: var(--link-color);
+			}
+
+			&[aria-current="page"] {
+				font-weight: bold;
 			}
 		}
 	}
@@ -479,7 +489,23 @@ footer {
 	font-size: var(--size--1);
 	background: var(--footer-background-color);
 
-	ul:not([class]) {
+
+	a {
+		&:not(:where(:hover, :focus)) {
+			text-decoration: none;
+		}
+
+		&,
+		&:visited {
+			color: var(--link-color);
+		}
+
+		&[aria-current="page"] {
+			font-weight: bold;
+		}
+	}
+
+	ul:not(.socials) {
 		list-style: none;
 		margin: 0;
 		padding: 0;

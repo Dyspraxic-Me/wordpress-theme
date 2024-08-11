@@ -34,14 +34,10 @@
 				<?php endif; ?>
 			</a>
 			<nav>
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'main',
-						'menu_id'        => 'main-menu',
-					)
-				);
-				?>
+				<?php wp_nav_menu([
+					'theme_location' => 'nav',
+					'menu_id'        => 'nav',
+				]); ?>
 			</nav>
 		</div>
 	</header>

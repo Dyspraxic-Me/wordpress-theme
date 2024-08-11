@@ -32,29 +32,10 @@
                 </li>
             </ul>
             <hr>
-            <ul>
-                <li>
-                    <a href="#">Accessibility</a>
-                </li>
-                <li>
-                    <a href="#">Data Protection (GDPR) Policy</a>
-                </li>
-                <li>
-                    <a href="#">Equal Opportunities Policy</a>
-                </li>
-                <li>
-                    <a href="#">Health and Safety Policy and Risk Assessment</a>
-                </li>
-                <li>
-                    <a href="#">Safeguarding Children Policy</a>
-                </li>
-                <li>
-                    <a href="#">Safeguarding Vulnerable Adults Policy</a>
-                </li>
-                <li>
-                    <a href="#">Volunteer Policy</a>
-                </li>
-            </ul>
+            <?php wp_nav_menu([
+                'theme_location' => 'footer_policies',
+                'menu_id'        => 'footer_policies',
+            ]); ?>
             <hr>
             <ul>
                 <li>

@@ -18,12 +18,11 @@ function main_setup() {
 		*/
 	add_theme_support( 'title-tag' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'main' => 'Primary',
-		)
-	);
+	// Register template menu locations
+	register_nav_menus([
+		'nav' => 'Navigation',
+		'footer_policies' => 'Footer policies',
+	]);
 }
 add_action( 'after_setup_theme', 'main_setup' );
 
