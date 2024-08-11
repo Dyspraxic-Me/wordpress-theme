@@ -1,0 +1,46 @@
+/*!
+Theme Name: Dyspraxic Me
+Theme URI: https://dyspraxic.me.uk/
+Author: Nick Colley
+Author URI: http://nickcolley.co.uk
+Description: Theme for the Dyspraxic Me Charity website
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+Text Domain: dyspraxic-me
+Tags:
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 900px;
+	padding-inline: 1rem;
+	margin-inline: auto;
+}
+
+section {
+	.container:has(img) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		align-items: center;
+	}
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+/* Utilities */
+.full-width {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	right: 50%;
+	margin-inline: -50vw;
+}
