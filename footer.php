@@ -36,6 +36,18 @@
                 'theme_location' => 'footer_policies',
                 'menu_id'        => 'footer_policies',
             ]); ?>
+            <hr class="hidden-when-no-javascript">
+            <fieldset class="theme hidden-when-no-javascript" data-theme-select="">
+                <legend>Theme</legend>
+                <div class="field">
+                    <input class="visually-hidden" id="light" value="light" name="theme" type="radio" checked="">
+                    <label for="light">Light</label>
+                </div>
+                <div class="field">
+                    <input class="visually-hidden" id="dark" value="dark" name="theme" type="radio">
+                    <label for="dark">Dark</label>
+                </div>
+            </fieldset>
             <hr>
             <ul>
                 <li>
