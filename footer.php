@@ -37,6 +37,18 @@
                 'menu_id'        => 'footer_policies',
             ]); ?>
             <hr>
+            <fieldset class="theme" data-theme-select="">
+                <legend>Theme</legend>
+                <div class="field">
+                    <input class="visually-hidden" id="light" value="light" name="theme" type="radio" checked="">
+                    <label for="light">Light</label>
+                </div>
+                <div class="field">
+                    <input class="visually-hidden" id="dark" value="dark" name="theme" type="radio">
+                    <label for="dark">Dark</label>
+                </div>
+            </fieldset>
+            <hr>
             <ul>
                 <li>
                     <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5103908/charity-overview">Registered Charity Number 1175961</a>

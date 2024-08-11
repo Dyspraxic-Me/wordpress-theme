@@ -10,6 +10,11 @@
 </head>
 
 <body <?php body_class(); ?>>
+<script>
+	/* TODO CAN I DO THIS SERVER SIDE COS WORDPRESS? */
+	const theme = localStorage.getItem("theme");
+	if (theme) document.documentElement.dataset.theme = theme;
+</script>
 <?php wp_body_open(); ?>
 	<a class="skip-link visually-hidden-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'dyspraxic-me' ); ?></a>
 	<header>

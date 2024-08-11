@@ -47,6 +47,8 @@ Tags:
 
 	--text-color: var(--dark-color);
 	--background-color: var(--light-color);
+	--accent-color: var(--purple);
+	--link-color: var(--blue);
 
 	--page-width: 1000px;
 	--page-padding: var(--space-m);
@@ -61,10 +63,6 @@ Tags:
 	--font-weight-regular: 400;
 	--font-weight-bold: 700;
 
-	--accent-color: var(--purple);
-
-	--link-color: var(--blue);
-
 	--focus-width: var(--width-1);
 	--focus-offset: 0.25em;
 
@@ -72,7 +70,7 @@ Tags:
 	--input-text-color: color-mix(in srgb, var(--light-color) 10%, var(--dark-color));
 	--input-border-color: var(--input-text-color);
 
-	--button-background-color: var(--blue);
+	--button-background-color: var(--link-color);
 	--button-text-color: var(--light-color);
 	--button-border-width: var(--width-1);
 
@@ -80,11 +78,19 @@ Tags:
 	--link-button-border-color: color-mix(in srgb, var(--white) 15%, var(--button-background-color));
 
 	--heading-color: var(--accent-color);
-	--header-background-color: color-mix(in srgb, var(--accent-color) 10%, var(--white));
+	--header-background-color: color-mix(in srgb, var(--accent-color) 10%, var(--background-color));
 	--footer-background-color: var(--header-background-color);
-	--section-background-color: color-mix(in srgb, var(--accent-color) 4%, var(--white));
+	--section-background-color: color-mix(in srgb, var(--accent-color) 4%, var(--background-color));
 
-	--horizontal-rule-color: var(--accent-color);
+	--horizontal-rule-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+}
+[data-theme="dark"] {
+	/* Dark mode */
+	--text-color: var(--light-color);
+	--background-color: var(--dark-color);
+	--accent-color: color-mix(in srgb, var(--light-color) 50%, var(--purple));
+	--link-color: lightblue;
+	--button-text-color: var(--dark-color);
 }
 
 *,
@@ -131,7 +137,7 @@ a:not([class]) {
 	--focus-offset: -2px;
 	display: block;
 	background: var(--button-background-color);
-	color:  var(--button-text-color);
+	color: var(--button-text-color);
 	padding: 0.6em var(--page-padding);
 }
 
@@ -153,6 +159,7 @@ h3,
 h4,
 h5,
 h6 {
+
 	&,
 	+* {
 		margin-top: 0;
@@ -193,7 +200,6 @@ hr {
 	margin: 0;
 	padding: 0;
 	margin-block: var(--space-s);
-	opacity: 0.5;
 	border: none;
 	border-top: var(--width-1) dashed var(--horizontal-rule-color);
 	border-top-left-radius: var(--border-top-left-radius);
@@ -339,6 +345,7 @@ section {
 }
 
 .wp-block-button {
+
 	a,
 	button {
 		font-size: inherit;
@@ -462,18 +469,23 @@ blockquote {
 	padding: 0;
 	margin: 0;
 	margin-bottom: var(--space-s);
+
 	p {
 		margin: 0;
+
 		&:last-of-type {
 			margin-bottom: var(--space-xs);
 		}
+
 		&:first-of-type::before {
 			content: open-quote;
 		}
+
 		&:last-of-type::after {
 			content: close-quote;
 		}
 	}
+
 	cite {
 		&::before {
 			content: "\2013\00a0";
@@ -535,7 +547,6 @@ footer {
 		li:not(:last-child) {
 			&::after {
 				content: "•";
-				opacity: .5;
 				color: var(--horizontal-rule-color);
 				font-size: 0.6em;
 				margin-left: calc(var(--social-gap) - 1ch);
@@ -559,6 +570,86 @@ footer {
 			border-top-right-radius: var(--border-top-right-radius);
 		}
 	}
+
+	.theme {
+		display: inline-block;
+		margin: 0;
+		margin-bottom: var(--space-2xs);
+		padding: 0.6em 0.8em;
+		padding-top: 0.3em;
+		border: var(--width-1) dashed var(--horizontal-rule-color);
+		border-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-bottom-left-radius);
+		border-bottom-right-radius: var(--border-bottom-right-radius);
+		border-top-left-radius: var(--border-top-left-radius);
+		border-top-right-radius: var(--border-top-right-radius);
+
+		legend {
+			margin: 0;
+			padding: 0 0.5em;
+		}
+
+		.field {
+			position: relative;
+			display: inline-block;
+
+			&:not(:last-child) {
+				margin-right: 0.5em;
+			}
+
+			&:focus-within {
+				outline: var(--focus-width) dashed;
+				outline-offset: calc(1.3 * var(--focus-offset));
+				border-bottom-left-radius: var(--border-bottom-left-radius);
+				border-bottom-right-radius: var(--border-bottom-right-radius);
+				border-top-left-radius: var(--border-top-left-radius);
+				border-top-right-radius: var(--border-top-right-radius);
+				input:focus {
+					outline: none;
+					box-shadow: none;
+				}
+			}
+			
+			label {
+				cursor: pointer;
+				display: flex;
+				gap: 0.3em;
+				align-items: center;
+		
+				&::after {
+					content: "";
+					position: absolute;
+					z-index: 1;
+					top: 0;
+					right: 0;
+					z-index: 0;
+					left: 0;
+					bottom: 0;
+				}
+			
+
+				&::before {
+					content: "";
+					display: block;
+					position: relative;
+					top: -0.02em;
+					height: 1em;
+					width: 1em;
+					border: 1px solid;
+					border-radius: 50%;
+				}
+			}
+
+			input {
+				z-index: 2;
+				&:checked + label::before {
+					background: var(--text-color);
+					box-shadow: inset 0 0 0 calc(1.8 * var(--width-1)) var(--background-color);
+				}
+			}
+
+		}
+	}
 }
 
 /* Utilities */
@@ -578,9 +669,11 @@ footer {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+
 	&::before {
 		content: "\00a0";
 	}
+
 	&::after {
 		content: "\00a0";
 	}
