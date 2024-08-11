@@ -9,7 +9,7 @@ if ( ! defined( '_DYSPRAXIC_ME_VERSION' ) ) {
 function main_setup() {
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
+	add_theme_support( 'custom-logo' );
 	/*
 		* Let WordPress manage the document title.
 		* By adding theme support, we declare that this theme does not use a
@@ -61,7 +61,7 @@ function allowed_block_types( $allowed_block_types, $block_editor_context ) {
     	// "core/cover",
     	"core/file",
     	"core/footnotes",
-    	"core/gallery",
+    	// "core/gallery",
     	"core/heading",
     	// "core/home-link",
     	"core/image",
@@ -112,7 +112,7 @@ function allowed_block_types( $allowed_block_types, $block_editor_context ) {
     	// "core/code",
     	// "core/column",
     	// "core/columns",
-    	"core/details",
+    	// "core/details",
     	"core/embed",
     	// "core/freeform",
     	// "core/group",
@@ -123,8 +123,8 @@ function allowed_block_types( $allowed_block_types, $block_editor_context ) {
     	// "core/nextpage",
     	"core/paragraph",
     	// "core/preformatted",
-    	// "core/pullquote",
-    	"core/quote",
+    	"core/pullquote",
+    	// "core/quote",
     	"core/separator",
     	// "core/social-links",
     	// "core/spacer",
