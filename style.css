@@ -69,10 +69,12 @@ Tags:
 	--input-border-width: var(--width-1);
 	--input-text-color: color-mix(in srgb, var(--light-color) 10%, var(--dark-color));
 	--input-border-color: var(--input-text-color);
+	--input-padding: 0.5em;
 
 	--button-background-color: var(--link-color);
 	--button-text-color: var(--light-color);
 	--button-border-width: var(--width-1);
+	--button-padding: 0.35em 0.7em;
 
 	--link-button-background-color: var(--background-color);
 	--link-button-border-color: color-mix(in srgb, var(--white) 15%, var(--button-background-color));
@@ -291,7 +293,7 @@ section {
 	}
 }
 
-.section-split {
+.section-split:has(img) {
 	display: grid;
 	gap: var(--space-m);
 
@@ -348,12 +350,12 @@ section {
 }
 
 .wp-block-button {
-
 	a,
-	button {
+	button,
+	input[type="submit"] {
 		font-size: inherit;
 		display: inline-block;
-		padding: 0.3em 0.6em 0.3em;
+		padding: var(--button-padding);
 		border: var(--button-border-width) solid;
 		border-bottom-left-radius: var(--border-bottom-left-radius);
 		border-bottom-right-radius: var(--border-bottom-right-radius);
@@ -361,8 +363,14 @@ section {
 		border-top-right-radius: var(--border-top-right-radius);
 	}
 
+	input[type="submit"],
 	button {
 		cursor: pointer;
+		line-height: inherit;
+	}
+
+	input[type="submit"] {
+		width: auto;
 	}
 
 	a:not(:where(:hover, :focus)) {
@@ -386,7 +394,8 @@ section {
 	}
 }
 
-.wp-block-button.is-style-fill :is(a, button) {
+.wp-block-button :is(button, input[type="submit"]),
+.wp-block-button.is-style-fill a {
 	--focus-color: var(--button-background-color);
 	background: var(--button-background-color);
 	border-color: var(--button-background-color);
@@ -423,7 +432,7 @@ form {
 	input {
 		display: block;
 		font-size: inherit;
-		padding: 0.5em;
+		padding: var(--input-padding);
 		width: 100%;
 		color: var(--input-text-color);
 		border: var(--input-border-width) solid var(--input-border-color);
@@ -501,7 +510,6 @@ footer {
 	margin-top: var(--space-m);
 	padding-top: var(--space-m);
 	padding-bottom: var(--space-l);
-	font-size: var(--size--1);
 	background: var(--footer-background-color);
 	/* If the content is small overflow the background to fill the page */
 	box-shadow: 0 100vh 0px 100vh var(--footer-background-color);
