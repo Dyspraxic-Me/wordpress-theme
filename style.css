@@ -112,8 +112,7 @@ body {
 	color: var(--text-color);
 	margin: 0;
 	padding: 0;
-	/* Allow full width to work as expected (https://www.smashingmagazine.com/2023/12/new-css-viewport-units-not-solve-classic-scrollbar-problem). */
-	container-type: inline-size;
+	overflow-x: hidden;
 }
 
 :focus {
