@@ -3,7 +3,7 @@
 * Block preview that is displayed on the real page.
 */
 ?>
-<section class="full-width">
+<section class="section full-width">
     <div class="container">
         <div class="section-split">
             <InnerBlocks className="section-summary" />
