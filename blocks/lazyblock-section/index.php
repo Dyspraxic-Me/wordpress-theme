@@ -23,6 +23,13 @@ add_action( 'lzb/init', function() {
                 'label' => 'Image',
                 'placement' => 'inspector',
             ],
+            'hidden' => [
+                'type' => 'toggle',
+                'name' => 'hidden',
+                'label' => 'Hidden',
+                'help' => 'Hide the section, useful for when a section is timely e.g. awareness weeks.',
+                'placement' => 'inspector'
+            ],
         ],
         'code' => ['output_method' => 'template']
     ]);   

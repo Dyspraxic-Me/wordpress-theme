@@ -3,6 +3,7 @@
 * Block preview that is displayed on the real page.
 */
 ?>
+<?php if ( empty($attributes['hidden']) || !$attributes['hidden'] ) : ?>
 <section
     <?php if ( !empty( $attributes['id'] ) ) : ?>
         id="section-<?php echo esc_attr(sanitize_title_with_dashes($attributes['id'])) ?>"
@@ -23,3 +24,4 @@
         </div>
     </div>
 </section>
+<?php endif; ?>

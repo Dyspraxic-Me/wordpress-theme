@@ -3,15 +3,22 @@
 * Block preview that is displayed in the WordPress editor.
 */
 ?>
+<?php if ( !empty($attributes['hidden']) && $attributes['hidden'] ) : ?>
+    <strong>This section is hidden.</strong>
+<?php endif; ?>
 <div
-    <?php if ( isset( $attributes['image']['url'] ) ) : ?>
-        style="
+    style="
+        <?php if ( !empty($attributes['hidden']) && $attributes['hidden'] ) : ?>
+            cursor: not-allowed;
+            opacity: 0.6;
+        <?php endif; ?>
+        <?php if ( isset( $attributes['image']['url'] ) ) : ?>
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: 1rem;
-        "
-    <?php endif; ?>
+        <?php endif; ?>
+    "
 
 >
     <div>
