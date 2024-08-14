@@ -10,6 +10,13 @@ add_action( 'lzb/init', function() {
         'category' => 'design',
         'category_label' => 'design',
         'controls' => [
+            'id' => [
+                'type' => 'text',
+                'name' => 'id',
+                'label' => 'anchor id',
+                'help' => 'id attribute given to the section, useful for linking to with anchor links.',
+                'placement' => 'inspector',
+            ],
             'image-url' => [
                 'type' => 'image',
                 'name' => 'image',

@@ -157,16 +157,9 @@ h6 {
 	margin-bottom: 0.5em;
 	color: var(--heading-color);
 	letter-spacing: -0.015em;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
 
 	&,
-	+* {
+	+ * {
 		margin-top: 0;
 	}
 }
@@ -213,7 +206,7 @@ hr {
 
 header {
 	background: var(--header-background-color);
-	margin-bottom: var(--space-xs);
+	margin-bottom: var(--space-m);
 
 	.container {
 		display: flex;
@@ -281,14 +274,18 @@ header {
 }
 
 .section {
+	padding-top: var(--space-m);
+	padding-bottom: var(--space-m);
+
 	.wp-block-heading {
 		font-size: var(--size-4);
 	}
 
-	padding-top: var(--space-m);
-	padding-bottom: var(--space-m);
+	&:first-of-type {
+		margin-top: var(--space-l);
+	}
 
-	&:nth-of-type(even) {
+	&:nth-of-type(odd) {
 		background: var(--section-background-color);
 	}
 }
@@ -469,9 +466,15 @@ form {
 }
 
 main {
-	p:not(:last-child) {
+	--prose-spacing: var(--space-s);
+	p {
 		max-width: var(--measure);
-		margin-bottom: var(--space-m);
+	}
+	p:not(:last-child) {
+		margin-bottom: var(--prose-spacing);
+	}
+	p + .wp-block-list {
+		margin-top: calc(-0.5 * var(--prose-spacing));
 	}
 }
 
@@ -542,48 +545,6 @@ footer {
 
 		li {
 			margin-block: 0.5em;
-		}
-	}
-
-	.socials {
-		--social-gap: 0.8rem;
-		display: flex;
-		align-items: start;
-		gap: var(--social-gap);
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		li {
-			display: inline-flex;
-			gap: 0.5em;
-			align-items: center;
-		}
-
-		li:not(:last-child) {
-			&::after {
-				content: "\2022";
-				color: var(--horizontal-rule-color);
-				font-size: 0.6em;
-				margin-left: calc(var(--social-gap) - 1ch);
-			}
-		}
-
-		a {
-			display: inline-flex;
-			gap: 0.4em;
-			align-items: center;
-		}
-
-		svg {
-			position: relative;
-			height: 1.4em;
-			width: 1.4em;
-			top: -1px;
-			border-bottom-left-radius: var(--border-bottom-left-radius);
-			border-bottom-right-radius: var(--border-bottom-right-radius);
-			border-top-left-radius: var(--border-top-left-radius);
-			border-top-right-radius: var(--border-top-right-radius);
 		}
 	}
 
@@ -668,19 +629,62 @@ footer {
 	}
 }
 
+.socials {
+	--social-gap: 0.8rem;
+	display: flex;
+	align-items: start;
+	gap: var(--social-gap);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline-flex;
+		gap: 0.5em;
+		align-items: center;
+	}
+
+	li:not(:last-child) {
+		&::after {
+			content: "\2022";
+			color: var(--horizontal-rule-color);
+			font-size: 0.6em;
+			margin-left: calc(var(--social-gap) - 1ch);
+		}
+	}
+
+	a {
+		display: inline-flex;
+		gap: 0.4em;
+		align-items: center;
+	}
+
+	svg {
+		position: relative;
+		height: 1.4em;
+		width: 1.4em;
+		top: -1px;
+		border-bottom-left-radius: var(--border-bottom-left-radius);
+		border-bottom-right-radius: var(--border-bottom-right-radius);
+		border-top-left-radius: var(--border-top-left-radius);
+		border-top-right-radius: var(--border-top-right-radius);
+	}
+}
+
 /**
  * Display Eventbrite Events Plugin
  * https://wordpress.org/plugins/widget-for-eventbrite-api/
  */
 
 .eaw-ulx {
-	display: grid;
-	grid-template-columns: auto auto;
+	display: flex;
+	flex-wrap: wrap;
 	gap: var(--space-s);
 	margin-bottom: var(--space-l);
 }
 
-.eaw-content-wrap {
+.eaw-li__wrap {
+	max-width: 320px;
 	margin-bottom: var(--space-s);
 }
 

@@ -3,7 +3,12 @@
 * Block preview that is displayed on the real page.
 */
 ?>
-<section class="section full-width">
+<section
+    <?php if ( !empty( $attributes['id'] ) ) : ?>
+        id="section-<?php echo esc_attr(sanitize_title_with_dashes($attributes['id'])) ?>"
+    <?php endif; ?>
+    class="section full-width"
+>
     <div class="container">
         <div class="section-split">
             <InnerBlocks className="section-summary" />
