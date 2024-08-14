@@ -24,10 +24,7 @@
 				href="<?php echo esc_url( home_url( '/' ) ); ?>"
 				aria-label="<?php bloginfo( 'name' ); ?>"
 			>
-				<?php
-					$custom_logo_id = get_theme_mod( 'custom_logo' );
-					$image_url = wp_get_attachment_image_url ( $custom_logo_id , 'full' );
-				?>
+				<?php $image_url = esc_url( get_template_directory_uri() . '/logo.svg' ); ?>
 				<?php if (!empty($image_url)): ?>
 					<img
 						height="60"
