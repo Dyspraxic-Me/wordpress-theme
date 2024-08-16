@@ -1,37 +1,44 @@
-/* Theme switcher */
-function themeSwitcher() {
-  const supportsCSSCustomProperties =
-    window.CSS && CSS.supports("color", "var(--property)");
+class ColorSchemeSelect extends HTMLElement {
+  constructor() {
+    super();
+    const supportsCSSLightDark = window.CSS && CSS.supports("color", "light-dark(white, black)");
+    if (!supportsCSSLightDark) {
+      return;
+    }
 
-  if (!supportsCSSCustomProperties) {
-    return;
+    this.initialise();
   }
 
-  const lightModeMediaQuery = window.matchMedia(
-    "(prefers-color-scheme: light)"
-  );
-  const preferedTheme = lightModeMediaQuery.matches ? "light" : "dark";
+  connectedCallback() {
+    this.removeAttribute("hidden");
+  }
 
-  const $themeSelect = document.querySelector("[data-theme-select]");
-  $themeSelect.removeAttribute("hidden");
-  $themeSelect.addEventListener("input", (event) =>
-    setTheme(event.target.value)
-  );
+  initialise() {
+    const $colorScheme = this;
+    if (!$colorScheme) {
+      return;
+    }
+    const $colorSchemeSelect = $colorScheme.querySelector("fieldset");
+    if (!$colorSchemeSelect) {
+      return;
+    }
+    $colorScheme.removeAttribute("hidden");
+    $colorSchemeSelect.addEventListener("input", ({ target }) => {
+      const name = target.value;
+      document.documentElement.style.colorScheme = name;
+      window.localStorage.setItem("color-scheme", name);
+    });
 
-  const $defaultCheckedInput = document.querySelector("[name=theme][checked]");
-  const defaultTheme = document.documentElement.dataset.theme || preferedTheme;
+    const $defaultCheckedInput = document.querySelector("[name=color-scheme][checked]");
+    const currentColorScheme = document.documentElement.style.colorScheme;
+    if (!currentColorScheme) {
+      return;
+    }
 
-  $defaultCheckedInput.checked = false;
-  $themeSelect.querySelector(
-    `[name=theme][value="${defaultTheme}"]`
-  ).checked = true;
-  setTheme(defaultTheme);
-
-  function setTheme(name) {
-    document.documentElement.dataset.theme = name;
-    window.localStorage.setItem("theme", name);
+    $defaultCheckedInput.checked = false;
+    $colorSchemeSelect.querySelector(
+      `[name=color-scheme][value="${currentColorScheme}"]`
+    ).checked = true;
   }
 }
-
-themeSwitcher();
-  
+customElements.define("color-scheme-select", ColorSchemeSelect);

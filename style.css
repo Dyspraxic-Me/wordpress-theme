@@ -34,7 +34,7 @@ Tags:
 	--space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
 
 	--width-1: 2px;
-	
+
 	--black: #222;
 	--white: #fdfdfd;
 	--blue: #005bbe;
@@ -89,12 +89,6 @@ Tags:
 	--section-background-color: color-mix(in srgb, var(--accent-color) 4%, var(--background-color));
 
 	--horizontal-rule-color: color-mix(in srgb, var(--accent-color), transparent 80%);
-}
-html[data-theme="light"] {
-	color-scheme: light;
-}
-html[data-theme="dark"] {
-	color-scheme: dark;
 }
 
 *,
@@ -159,7 +153,7 @@ h6 {
 	letter-spacing: -0.015em;
 
 	&,
-	+ * {
+	+* {
 		margin-top: 0;
 	}
 }
@@ -290,7 +284,7 @@ header {
 	}
 
 	.wp-block-button:last-child {
-	  margin-bottom: var(--space-xs);
+		margin-bottom: var(--space-xs);
 	}
 }
 
@@ -350,7 +344,8 @@ header {
 	}
 }
 
-.eaw-booknow, /* Display Eventbrite Events Plugin */
+.eaw-booknow,
+/* Display Eventbrite Events Plugin */
 .wp-block-button {
 	a,
 	button,
@@ -358,6 +353,7 @@ header {
 		font-size: inherit;
 		display: inline-block;
 		padding: var(--button-padding);
+		white-space: nowrap;
 		border: var(--button-border-width) solid;
 		border-bottom-left-radius: var(--border-bottom-left-radius);
 		border-bottom-right-radius: var(--border-bottom-right-radius);
@@ -379,12 +375,12 @@ header {
 		--focus-color: var(--link-button-border-color);
 		color: var(--link-color);
 		border-color: var(--link-button-border-color);
-	
+
 		&,
 		&:visited {
 			color: var(--button-background-color);
 		}
-	
+
 		&:hover {
 			--focus-color: var(--button-background-color);
 			background: var(--button-background-color);
@@ -402,16 +398,16 @@ header {
 		--focus-color: var(--button-background-color);
 		background: var(--button-background-color);
 		border-color: var(--button-background-color);
-	
+
 		&,
 		&:visited {
 			color: var(--button-text-color);
 		}
-	
+
 		&:hover {
 			background: color-mix(in srgb, var(--black) 10%, var(--button-background-color));
 		}
-	
+
 		&:active {
 			background: color-mix(in srgb, var(--black) 20%, var(--button-background-color));
 		}
@@ -421,6 +417,7 @@ header {
 
 .wp-block-buttons.is-layout-flex {
 	display: inline-flex;
+	flex-wrap: wrap;
 	gap: 0.5em;
 }
 
@@ -471,15 +468,19 @@ form {
 
 main {
 	--prose-spacing: var(--space-s);
+
 	p {
 		max-width: var(--measure);
+
 		&:empty {
 			display: none;
 		}
+
 		&:not(:last-child) {
 			margin-bottom: var(--prose-spacing);
 		}
-		& + .wp-block-list {
+
+		&+.wp-block-list {
 			margin-top: calc(-0.5 * var(--prose-spacing));
 		}
 	}
@@ -554,8 +555,10 @@ footer {
 			margin-block: 0.5em;
 		}
 	}
+}
 
-	.theme {
+color-scheme-select {
+	fieldset {
 		display: inline-block;
 		margin: 0;
 		margin-bottom: var(--space-2xs);
@@ -567,74 +570,74 @@ footer {
 		border-bottom-right-radius: var(--border-bottom-right-radius);
 		border-top-left-radius: var(--border-top-left-radius);
 		border-top-right-radius: var(--border-top-right-radius);
+	}
 
-		legend {
-			margin: 0;
-			padding: 0 0.5em;
+	legend {
+		margin: 0;
+		padding: 0 0.5em;
+	}
+
+	.field-group {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		margin-top: 0.1em;
+	}
+
+	.field {
+		position: relative;
+		display: inline-block;
+
+		&:focus-within {
+			outline: var(--focus-width) dashed;
+			outline-offset: calc(1.3 * var(--focus-offset));
+			border-bottom-left-radius: var(--border-bottom-left-radius);
+			border-bottom-right-radius: var(--border-bottom-right-radius);
+			border-top-left-radius: var(--border-top-left-radius);
+			border-top-right-radius: var(--border-top-right-radius);
+
+			input:focus {
+				outline: none;
+				box-shadow: none;
+			}
+		}
+	}
+
+	label {
+		cursor: pointer;
+		display: flex;
+		gap: 0.3em;
+		align-items: center;
+
+		&::after {
+			content: "";
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			right: 0;
+			z-index: 0;
+			left: 0;
+			bottom: 0;
 		}
 
-		.field-group {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.5em;
-			margin-top: 0.1em;
-		}
 
-		.field {
+		&::before {
+			content: "";
+			display: block;
 			position: relative;
-			display: inline-block;
+			top: -0.02em;
+			height: 1em;
+			width: 1em;
+			border: 1px solid;
+			border-radius: 50%;
+		}
+	}
 
-			&:focus-within {
-				outline: var(--focus-width) dashed;
-				outline-offset: calc(1.3 * var(--focus-offset));
-				border-bottom-left-radius: var(--border-bottom-left-radius);
-				border-bottom-right-radius: var(--border-bottom-right-radius);
-				border-top-left-radius: var(--border-top-left-radius);
-				border-top-right-radius: var(--border-top-right-radius);
-				input:focus {
-					outline: none;
-					box-shadow: none;
-				}
-			}
-			
-			label {
-				cursor: pointer;
-				display: flex;
-				gap: 0.3em;
-				align-items: center;
-		
-				&::after {
-					content: "";
-					position: absolute;
-					z-index: 1;
-					top: 0;
-					right: 0;
-					z-index: 0;
-					left: 0;
-					bottom: 0;
-				}
-			
-
-				&::before {
-					content: "";
-					display: block;
-					position: relative;
-					top: -0.02em;
-					height: 1em;
-					width: 1em;
-					border: 1px solid;
-					border-radius: 50%;
-				}
-			}
-
-			input {
-				z-index: 2;
-				&:checked + label::before {
-					background: var(--text-color);
-					box-shadow: inset 0 0 0 calc(1.8 * var(--width-1)) var(--background-color);
-				}
-			}
-
+	input {
+		z-index: 2;
+		&:checked + label::before {
+			background: var(--text-color);
+			box-shadow: inset 0 0 0 calc(1.8 * var(--width-1)) var(--background-color);
 		}
 	}
 }
@@ -705,6 +708,7 @@ footer {
 .eaw-title {
 	text-transform: capitalize;
 	font-size: var(--size-2);
+
 	a:not(:where(:hover, :focus)) {
 		color: inherit;
 		text-decoration: none;
@@ -738,6 +742,7 @@ footer {
 	}
 }
 
+[hidden],
 html:not([data-javascript="enabled"]) .hidden-when-no-javascript {
 	display: none !important;
 }

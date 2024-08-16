@@ -11,9 +11,8 @@
 
 <body <?php body_class(); ?>>
 <script>
-	document.documentElement.dataset.javascript = "enabled";
-	const theme = localStorage.getItem("theme");
-	if (theme) document.documentElement.dataset.theme = theme;
+	const colorScheme = window.localStorage.getItem("color-scheme");
+	if (colorScheme) document.documentElement.style.colorScheme = colorScheme;
 </script>
 <?php wp_body_open(); ?>
 	<a class="skip-link visually-hidden-focusable" href="#content"><?php esc_html_e( 'Skip to content', 'dyspraxic-me' ); ?></a>
