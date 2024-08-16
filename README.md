@@ -14,3 +14,7 @@ WordPress theme for [Dyspraxic Me](https://dyspraxic.me.uk).
 1. Login to your WordPress admin
     1. check the Lazy Blocks plugin is installed.
     1. Go to themes and activate the Dyspraxic Me Theme
+
+## Acknowledgements
+- [https://www.getpapercss.com](PaperCSS) for inspiration on the casual rounded corners for UI elements.
+- [rebeccapurple](https://lists.w3.org/Archives/Public/www-style/2014Jun/0312.html) as the main accent colour for the theme
