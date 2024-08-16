@@ -10,7 +10,7 @@
             ]); ?>
             <color-scheme-select hidden>
                 <hr>
-                <fieldset class="color-scheme">
+                <fieldset>
                     <legend>Theme</legend>
                     <div class="field">
                         <input class="visually-hidden" id="default" value="" name="color-scheme" type="radio" checked>

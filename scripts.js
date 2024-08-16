@@ -13,22 +13,23 @@ class ColorSchemeSelect extends HTMLElement {
     if (!this.$fieldset) {
       return;
     }
-    console.log(this.$fieldset);
     this.removeAttribute("hidden");
-    this.$fieldset.addEventListener("input", this.handleChange);
-    document.addEventListener("keyup", this.handleChange);
+    this.$fieldset.addEventListener("change", this.handleChange);
     this.initialise();
   }
 
   disconnectedCallback() {
-    this.$fieldset.removeEventListener("input", this.handleChange);
+    this.$fieldset.removeEventListener("change", this.handleChange);
   }
 
-  handleChange(event) {
-    console.log(Math.random())
-    const name = event.target.value;
-    document.documentElement.style.colorScheme = name;
-    window.localStorage.setItem("color-scheme", name);
+  handleChange({ target: { value } }) {
+    if (!value) {
+      window.localStorage.removeItem("color-scheme");
+      document.documentElement.style.removeProperty("color-scheme");
+      return;
+    }
+    document.documentElement.style.colorScheme = value;
+    window.localStorage.setItem("color-scheme", value);
   }
 
   initialise() {

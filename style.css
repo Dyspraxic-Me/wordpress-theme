@@ -628,16 +628,17 @@ color-scheme-select {
 			top: -0.02em;
 			height: 1em;
 			width: 1em;
-			border: 1px solid;
-			border-radius: 50%;
+			border: var(--input-border-width) solid;
+			border-radius: 100%;
 		}
 	}
 
 	input {
 		z-index: 2;
 		&:checked + label::before {
+			--checked-offset: calc(1.5 * var(--input-border-width));
 			background: var(--text-color);
-			box-shadow: inset 0 0 0 calc(1.8 * var(--width-1)) var(--background-color);
+			box-shadow: inset 0 0 0 var(--checked-offset) var(--background-color);
 		}
 	}
 }
