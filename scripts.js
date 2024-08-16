@@ -1,44 +1,45 @@
 class ColorSchemeSelect extends HTMLElement {
   constructor() {
     super();
-    const supportsCSSLightDark = window.CSS && CSS.supports("color", "light-dark(white, black)");
-    if (!supportsCSSLightDark) {
-      return;
-    }
-
-    this.initialise();
+    this.supportsCSSLightDark = window.CSS && CSS.supports("color", "light-dark(white, black)");
+    this.$fieldset = this.querySelector("fieldset");
+    this.colorScheme = document.documentElement.style.colorScheme || null;
   }
 
   connectedCallback() {
+    if (!this.supportsCSSLightDark) {
+      return;
+    }
+    if (!this.$fieldset) {
+      return;
+    }
+    console.log(this.$fieldset);
     this.removeAttribute("hidden");
+    this.$fieldset.addEventListener("input", this.handleChange);
+    document.addEventListener("keyup", this.handleChange);
+    this.initialise();
+  }
+
+  disconnectedCallback() {
+    this.$fieldset.removeEventListener("input", this.handleChange);
+  }
+
+  handleChange(event) {
+    console.log(Math.random())
+    const name = event.target.value;
+    document.documentElement.style.colorScheme = name;
+    window.localStorage.setItem("color-scheme", name);
   }
 
   initialise() {
-    const $colorScheme = this;
-    if (!$colorScheme) {
+    if (!this.colorScheme) {
       return;
     }
-    const $colorSchemeSelect = $colorScheme.querySelector("fieldset");
-    if (!$colorSchemeSelect) {
-      return;
-    }
-    $colorScheme.removeAttribute("hidden");
-    $colorSchemeSelect.addEventListener("input", ({ target }) => {
-      const name = target.value;
-      document.documentElement.style.colorScheme = name;
-      window.localStorage.setItem("color-scheme", name);
-    });
-
-    const $defaultCheckedInput = document.querySelector("[name=color-scheme][checked]");
-    const currentColorScheme = document.documentElement.style.colorScheme;
-    if (!currentColorScheme) {
-      return;
-    }
-
+    // Set the input fields to match the current color scheme.
+    const $defaultCheckedInput = this.querySelector("[name=color-scheme][checked]");
+    const $matchingInput = this.querySelector(`[name=color-scheme][value="${this.colorScheme}"]`);
     $defaultCheckedInput.checked = false;
-    $colorSchemeSelect.querySelector(
-      `[name=color-scheme][value="${currentColorScheme}"]`
-    ).checked = true;
+    $matchingInput.checked = true;
   }
 }
 customElements.define("color-scheme-select", ColorSchemeSelect);
