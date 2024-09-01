@@ -55,7 +55,8 @@ Tags:
 	--link-color: light-dark(var(--blue), var(--light-blue));
 
 	--page-width: 1000px;
-	--page-padding: var(--space-m);
+	--page-padding-inline: var(--space-m);
+	--page-padding-block: var(--space-l);
 	--measure: 60ch;
 	--border-radius: 0.4em;
 	--border-radius-offset: calc(3 * var(--border-radius));
@@ -137,7 +138,7 @@ a:not([class]) {
 	display: block;
 	background: var(--button-background-color);
 	color: var(--button-text-color);
-	padding: 0.6em var(--page-padding);
+	padding: 0.6em var(--page-padding-inline);
 }
 
 h1,
@@ -183,7 +184,7 @@ h6 {
 
 .container {
 	max-width: var(--page-width);
-	padding-inline: var(--page-padding);
+	padding-inline: var(--page-padding-inline);
 	margin-inline: auto;
 }
 
@@ -199,7 +200,7 @@ hr {
 
 header {
 	background: var(--header-background-color);
-	margin-bottom: var(--space-m);
+	margin-bottom: var(--page-padding-block);
 
 	.container {
 		display: flex;
@@ -274,16 +275,16 @@ header {
 		margin-top: var(--space-l);
 	}
 
+	&:last-of-type {
+		padding-bottom: 0;
+	}
+
 	&:nth-of-type(odd) {
 		background: var(--section-background-color);
 	}
 
 	.wp-block-heading {
 		font-size: var(--size-4);
-	}
-
-	.wp-block-button:last-child {
-		margin-bottom: var(--space-xs);
 	}
 }
 
@@ -341,6 +342,11 @@ header {
 	@media screen and (orientation: portrait) {
 		max-height: 30vh;
 	}
+}
+
+.wp-block-list {
+	list-style: inside;
+	padding: 0;
 }
 
 .eaw-booknow,
@@ -430,7 +436,7 @@ form {
 		color: var(--input-text-color);
 	}
 
-	input {
+	input:not([type="submit"]) {
 		display: block;
 		font-size: inherit;
 		padding: var(--input-padding);
@@ -479,7 +485,7 @@ main {
 			margin-bottom: var(--prose-spacing);
 		}
 
-		&+.wp-block-list {
+		& + .wp-block-list {
 			margin-top: calc(-0.5 * var(--prose-spacing));
 		}
 	}
@@ -522,7 +528,7 @@ blockquote {
 
 
 footer {
-	margin-top: var(--space-s);
+	margin-top: var(--page-padding-block);
 	padding-top: var(--space-m);
 	padding-bottom: var(--space-l);
 	background: var(--footer-background-color);
