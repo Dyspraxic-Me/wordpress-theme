@@ -56,7 +56,8 @@ Tags:
 
 	--page-width: 1000px;
 	--page-padding-inline: var(--space-m);
-	--page-padding-block: var(--space-l);
+	--page-padding-top: var(--space-l);
+	--page-padding-bottom: var(--space-xl);
 	--measure: 60ch;
 	--border-radius: 0.4em;
 	--border-radius-offset: calc(3 * var(--border-radius));
@@ -88,8 +89,11 @@ Tags:
 	--header-background-color: color-mix(in srgb, var(--accent-color) 10%, var(--background-color));
 	--footer-background-color: var(--header-background-color);
 	--section-background-color: color-mix(in srgb, var(--accent-color) 4%, var(--background-color));
+	--event-background-color: color-mix(in srgb, var(--accent-color) 6%, var(--background-color));
 
 	--horizontal-rule-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+	--blockquote-border-color: var(--horizontal-rule-color);
+	--quote-color: color-mix(in srgb, var(--accent-color) 50%, var(--background-color));
 }
 
 *,
@@ -200,7 +204,7 @@ hr {
 
 header {
 	background: var(--header-background-color);
-	margin-bottom: var(--page-padding-block);
+	margin-bottom: var(--page-padding-top);
 
 	.container {
 		display: flex;
@@ -493,15 +497,19 @@ main {
 
 figure {
 	padding: 0;
-	margin: 0;
-	margin-bottom: var(--space-s);
+	margin:0;
+}
+
+
+figure:has(blockquote) {
+	display: block;
+	margin: var(--space-m) 0 var(--space-l);
+	max-width: var(--measure);
 }
 
 blockquote {
-	padding: 0;
 	margin: 0;
-	margin-left: var(--space-xl);
-	margin-bottom: var(--space-m);
+	padding: 0;
 
 	p {
 		margin: 0;
@@ -510,12 +518,23 @@ blockquote {
 			margin-bottom: var(--space-xs);
 		}
 
+		&:first-of-type::before,
+		&:last-of-type::after {
+			color: var(--quote-color);
+			font-weight: var(--font-weight-bold);
+			font-size: 4em;
+			line-height: 0;
+			vertical-align: -0.9ex;
+		}
+
 		&:first-of-type::before {
 			content: open-quote;
+			margin-right: 0.05em;
 		}
 
 		&:last-of-type::after {
 			content: close-quote;
+			margin-left: 0.05em;
 		}
 	}
 
@@ -528,7 +547,7 @@ blockquote {
 
 
 footer {
-	margin-top: var(--page-padding-block);
+	margin-top: var(--page-padding-bottom);
 	padding-top: var(--space-m);
 	padding-bottom: var(--space-l);
 	background: var(--footer-background-color);
@@ -696,15 +715,25 @@ color-scheme-select {
  * https://wordpress.org/plugins/widget-for-eventbrite-api/
  */
 
-.eaw-ulx {
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--space-s);
-	margin-bottom: var(--space-l);
+.eaw-block {
+	margin-top: var(--space-m);
 }
 
-.eaw-li__wrap {
-	margin-bottom: var(--space-s);
+.eaw-ulx {
+	display: grid;
+	grid-template-columns: repeat(2, auto);
+	gap: var(--space-s);
+	margin-bottom: var(--space-l);
+	max-width: calc(0.8 * var(--page-width));
+}
+
+.eaw-content-wrap {
+	background: var(--event-background-color);
+	padding: 1.3rem var(--space-s);
+	border-bottom-left-radius: var(--border-bottom-left-radius);
+    border-bottom-right-radius: var(--border-bottom-right-radius);
+    border-top-left-radius: var(--border-top-left-radius);
+    border-top-right-radius: var(--border-top-right-radius);
 }
 
 .eaw-summary {
@@ -715,6 +744,10 @@ color-scheme-select {
 .eaw-title {
 	text-transform: capitalize;
 	font-size: var(--size-2);
+
+	a {
+		display: inline-block;
+	}
 
 	a:not(:where(:hover, :focus)) {
 		color: inherit;

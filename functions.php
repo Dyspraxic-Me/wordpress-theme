@@ -37,3 +37,17 @@ add_action( 'wp_enqueue_scripts', 'enqueue_assets' );
 
 require_once( __DIR__ . "/functions/restrict_block_usage.php" );
 require_once( __DIR__ . "/functions/lazyblocks.php" );
+
+/* Improve the Eventbrite markup output with some awful regexing */
+add_action('wp_head', function () {
+	ob_start(function ($buffer) {
+		return preg_replace(
+			'/title="Eventbrite.*" rel="bookmark" >Dyspraxic Me[:]?(.*)\<\/a\>/i',
+			">$1</a>",
+			$buffer
+		);
+	});
+});
+add_action('wp_footer', function () {
+	ob_end_flush();
+});
