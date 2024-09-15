@@ -68,8 +68,10 @@ Tags:
 
 	--font-weight-regular: 400;
 	--font-weight-bold: 700;
+	--text-decoration-thickness-bold: 0.08em;
 
 	--focus-width: var(--width-1);
+	--focus-width-bold: 3px;
 	--focus-offset: 0.25em;
 
 	--input-border-width: var(--width-1);
@@ -159,6 +161,11 @@ h6 {
 	&,
 	+* {
 		margin-top: 0;
+	}
+
+	a {
+		text-decoration-thickness: var(--text-decoration-thickness-bold);
+		--focus-width: var(--focus-width-bold);
 	}
 }
 
@@ -256,6 +263,8 @@ header {
 
 			&[aria-current="page"] {
 				font-weight: bold;
+				text-decoration-thickness: var(--text-decoration-thickness-bold);
+				--focus-width: var(--focus-width-bold);
 			}
 		}
 	}
