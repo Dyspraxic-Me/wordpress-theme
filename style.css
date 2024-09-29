@@ -56,8 +56,8 @@ Tags:
 
 	--page-width: 1000px;
 	--page-padding-inline: var(--space-m);
-	--page-padding-top: var(--space-l);
-	--page-padding-bottom: var(--space-xl);
+	--page-padding-top: var(--space-xl);
+	--page-padding-bottom: var(--space-2xl);
 	--measure: 60ch;
 	--border-radius: 0.4em;
 	--border-radius-offset: calc(3 * var(--border-radius));
@@ -211,6 +211,8 @@ hr {
 
 header {
 	background: var(--header-background-color);
+	padding-top: var(--space-2xs);
+	padding-bottom: calc(8px + var(--space-2xs));
 	margin-bottom: var(--page-padding-top);
 
 	.container {
@@ -219,7 +221,6 @@ header {
 		gap: var(--space-xs);
 		justify-content: space-between;
 		align-items: center;
-		padding-block: var(--space-2xs);
 	}
 
 	.logo {
@@ -249,6 +250,10 @@ header {
 		align-items: center;
 		gap: var(--space-xs);
 
+		.menu-item {
+			white-space: nowrap;
+		}
+
 		.menu-item:not(.wp-block-button) a {
 			padding: 0.4em 0.2em;
 
@@ -270,6 +275,8 @@ header {
 	}
 
 	@media screen and (max-width: 500px) {
+		padding-bottom: var(--space-m);
+
 		.container {
 			flex-direction: column;
 		}
@@ -281,11 +288,10 @@ header {
 }
 
 .section {
-	padding-top: var(--space-m);
-	padding-bottom: var(--space-m);
+	padding-block: var(--space-l);
 
 	&:first-of-type {
-		margin-top: var(--space-l);
+		margin-top: var(--space-xl);
 	}
 
 	&:last-of-type {
@@ -772,6 +778,44 @@ color-scheme-select {
 		text-decoration: none;
 	}
 }
+
+/**
+ * Squiggle dividers
+ **/
+ header,
+ .section:nth-of-type(odd),
+ footer {
+	--squiggle-depth: 100px;
+
+	position: relative;
+	background-clip: content-box !important;
+
+	&:not(header)::before,
+	&::after {
+		pointer-events: none;
+		z-index: -1;
+		content: "";
+		position: absolute;
+		display: block;
+		height: var(--squiggle-depth);
+		width: 100%;
+		background: inherit;
+	}
+	&::after {
+		bottom: 0;
+	}
+	&::before {
+		top: 0;
+	}
+ }
+ .section:nth-of-type(odd)::after,
+ header::after {
+	clip-path: url(#squiggle-bottom);
+ }
+ .section:nth-of-type(odd)::before,
+ footer::before {
+	clip-path: url(#squiggle-top);
+ }
 
 /* Utilities */
 .visually-hidden,
