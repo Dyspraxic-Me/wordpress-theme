@@ -211,8 +211,7 @@ hr {
 
 header {
 	background: var(--header-background-color);
-	padding-top: var(--space-2xs);
-	padding-bottom: calc(8px + var(--space-2xs));
+	padding-block: var(--space-2xs);
 	margin-bottom: var(--page-padding-top);
 
 	.container {
@@ -790,7 +789,7 @@ color-scheme-select {
 	position: relative;
 	background-clip: content-box !important;
 
-	&:not(header)::before,
+	&::before,
 	&::after {
 		pointer-events: none;
 		z-index: -1;
@@ -815,6 +814,9 @@ color-scheme-select {
  .section:nth-of-type(odd)::before,
  footer::before {
 	clip-path: url(#squiggle-top);
+ }
+ header::before {
+	--squiggle-depth: 50px;
  }
 
 /* Utilities */
