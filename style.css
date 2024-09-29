@@ -199,6 +199,7 @@ h6 {
 	margin-inline: auto;
 }
 
+.wp-block-separator,
 hr {
 	margin: 0;
 	padding: 0;
@@ -363,87 +364,6 @@ header {
 	}
 }
 
-.wp-block-list {
-	list-style: inside;
-	padding: 0;
-}
-
-.eaw-booknow,
-/* Display Eventbrite Events Plugin */
-.wp-block-button {
-	a,
-	button,
-	input[type="submit"] {
-		font-size: inherit;
-		display: inline-block;
-		padding: var(--button-padding);
-		border: var(--button-border-width) solid;
-		border-bottom-left-radius: var(--border-bottom-left-radius);
-		border-bottom-right-radius: var(--border-bottom-right-radius);
-		border-top-left-radius: var(--border-top-left-radius);
-		border-top-right-radius: var(--border-top-right-radius);
-	}
-
-	input[type="submit"],
-	button {
-		cursor: pointer;
-		line-height: inherit;
-	}
-
-	input[type="submit"] {
-		width: auto;
-	}
-
-	a {
-		--focus-color: var(--link-button-border-color);
-		color: var(--link-color);
-		border-color: var(--link-button-border-color);
-
-		&,
-		&:visited {
-			color: var(--button-background-color);
-		}
-
-		&:hover {
-			--focus-color: var(--button-background-color);
-			background: var(--button-background-color);
-			color: var(--button-text-color);
-		}
-
-		&:not(:where(:hover, :focus)) {
-			text-decoration: none;
-		}
-	}
-
-	button,
-	input[type="submit"],
-	&.is-style-fill a {
-		--focus-color: var(--button-background-color);
-		background: var(--button-background-color);
-		border-color: var(--button-background-color);
-
-		&,
-		&:visited {
-			color: var(--button-text-color);
-		}
-
-		&:hover {
-			background: color-mix(in srgb, var(--black) 10%, var(--button-background-color));
-		}
-
-		&:active {
-			background: color-mix(in srgb, var(--black) 20%, var(--button-background-color));
-		}
-	}
-}
-
-
-.wp-block-buttons.is-layout-flex {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: 0.5em;
-}
-
 form {
 	max-width: var(--measure);
 
@@ -492,6 +412,10 @@ form {
 main {
 	--prose-spacing: var(--space-s);
 
+	img {
+		max-width: 100%;
+	}
+
 	p {
 		max-width: var(--measure);
 
@@ -518,56 +442,10 @@ main {
 	}
 }
 
-figure {
+/* figure {
 	padding: 0;
 	margin:0;
-}
-
-
-figure:has(blockquote) {
-	display: block;
-	margin: var(--space-m) 0 var(--space-l);
-	max-width: var(--measure);
-}
-
-blockquote {
-	margin: 0;
-	padding: 0;
-
-	p {
-		margin: 0;
-
-		&:last-of-type {
-			margin-bottom: var(--space-xs);
-		}
-
-		&:first-of-type::before,
-		&:last-of-type::after {
-			color: var(--quote-color);
-			font-weight: var(--font-weight-bold);
-			font-size: 4em;
-			line-height: 0;
-			vertical-align: -0.9ex;
-		}
-
-		&:first-of-type::before {
-			content: open-quote;
-			margin-right: 0.05em;
-		}
-
-		&:last-of-type::after {
-			content: close-quote;
-			margin-left: 0.05em;
-		}
-	}
-
-	cite {
-		&::before {
-			content: "\2013\00a0";
-		}
-	}
-}
-
+} */
 
 footer {
 	margin-top: var(--page-padding-bottom);
@@ -734,6 +612,47 @@ color-scheme-select {
 }
 
 /**
+ * Squiggle dividers
+ **/
+ header,
+ .section:nth-of-type(odd),
+ footer {
+	--squiggle-depth: 100px;
+
+	position: relative;
+	background-clip: content-box !important;
+
+	&::before,
+	&::after {
+		pointer-events: none;
+		z-index: -1;
+		content: "";
+		position: absolute;
+		display: block;
+		height: var(--squiggle-depth);
+		width: 100%;
+		background: inherit;
+	}
+	&::after {
+		bottom: 0;
+	}
+	&::before {
+		top: 0;
+	}
+ }
+ .section:nth-of-type(odd)::after,
+ header::after {
+	clip-path: url(#squiggle-bottom);
+ }
+ .section:nth-of-type(odd)::before,
+ footer::before {
+	clip-path: url(#squiggle-top);
+ }
+ header::before {
+	--squiggle-depth: 50px;
+ }
+
+/**
  * Display Eventbrite Events Plugin
  * https://wordpress.org/plugins/widget-for-eventbrite-api/
  */
@@ -778,46 +697,151 @@ color-scheme-select {
 	}
 }
 
+
+
 /**
- * Squiggle dividers
+ * WordPress Core styles adjustments 
  **/
- header,
- .section:nth-of-type(odd),
- footer {
-	--squiggle-depth: 100px;
 
-	position: relative;
-	background-clip: content-box !important;
+.wp-block-pullquote {
+	display: block;
+	font-size: inherit;
+  	line-height: inherit;
+	margin: var(--space-m) 0 var(--space-l);
+	padding: 0;
 
-	&::before,
-	&::after {
-		pointer-events: none;
-		z-index: -1;
-		content: "";
-		position: absolute;
-		display: block;
-		height: var(--squiggle-depth);
-		width: 100%;
-		background: inherit;
+	&.alignleft {
+		text-align: left;
 	}
-	&::after {
-		bottom: 0;
+	&.alignright {
+		text-align: right;
 	}
-	&::before {
-		top: 0;
+
+	blockquote {
+		p {
+			margin: 0;
+
+			&:last-of-type {
+				margin-bottom: var(--space-xs);
+			}
+
+			&:first-of-type::before,
+			&:last-of-type::after {
+				color: var(--quote-color);
+				font-weight: var(--font-weight-bold);
+				font-size: 4em;
+				line-height: 0;
+				vertical-align: -0.9ex;
+			}
+
+			&:first-of-type::before {
+				content: open-quote;
+				margin-right: 0.05em;
+			}
+
+			&:last-of-type::after {
+				content: close-quote;
+				margin-left: 0.05em;
+			}
+		}
+
+		cite {
+			margin-left: 1.2em;
+			&::before {
+				content: "\2013\00a0";
+			}
+		}
 	}
- }
- .section:nth-of-type(odd)::after,
- header::after {
-	clip-path: url(#squiggle-bottom);
- }
- .section:nth-of-type(odd)::before,
- footer::before {
-	clip-path: url(#squiggle-top);
- }
- header::before {
-	--squiggle-depth: 50px;
- }
+}
+
+.wp-block-list {
+	list-style: inside;
+	padding: 0;
+}
+
+.eaw-booknow,
+/* Display Eventbrite Events Plugin */
+.wp-block-button {
+	a,
+	button,
+	input[type="submit"] {
+		font-size: inherit;
+		display: inline-block;
+		padding: var(--button-padding);
+		border: var(--button-border-width) solid;
+		border-bottom-left-radius: var(--border-bottom-left-radius);
+		border-bottom-right-radius: var(--border-bottom-right-radius);
+		border-top-left-radius: var(--border-top-left-radius);
+		border-top-right-radius: var(--border-top-right-radius);
+	}
+
+	input[type="submit"],
+	button {
+		line-height: inherit;
+	}
+
+	input[type="submit"] {
+		width: auto;
+	}
+
+	a {
+		--focus-color: var(--link-button-border-color);
+		color: var(--link-color);
+		border-color: var(--link-button-border-color);
+		background: none;
+
+		&,
+		&:visited {
+			color: var(--button-background-color);
+		}
+
+		&:hover {
+			background: color-mix(in srgb, var(--button-background-color) 5%, var(--background-color));
+		}
+
+		&:active {
+			--focus-color: var(--button-background-color);
+			background: var(--button-background-color);
+			color: var(--button-text-color);
+		}
+
+		&:not(:where(:hover, :focus)) {
+			text-decoration: none;
+		}
+	}
+
+	button,
+	input[type="submit"],
+	&.is-style-fill a {
+		--focus-color: var(--button-background-color);
+		background: var(--button-background-color);
+		border-color: var(--button-background-color);
+
+		&,
+		&:visited {
+			color: var(--button-text-color);
+		}
+
+		&:hover {
+			background: color-mix(in srgb, var(--dark-color) 10%, var(--button-background-color));
+		}
+
+		&:active {
+			background: color-mix(in srgb, var(--dark-color) 20%, var(--button-background-color));
+		}
+	}
+}
+
+.wp-block-buttons.is-layout-flex {
+	display: inline-flex;
+}
+
+.wp-block-image img {
+	border-bottom-left-radius: var(--border-bottom-left-radius);
+	border-bottom-right-radius: var(--border-bottom-right-radius);
+	border-top-left-radius: var(--border-top-left-radius);
+	border-top-right-radius: var(--border-top-right-radius);
+}
 
 /* Utilities */
 .visually-hidden,

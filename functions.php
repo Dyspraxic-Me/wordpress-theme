@@ -35,7 +35,6 @@ function enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'enqueue_assets' );
 
 
-require_once( __DIR__ . "/functions/restrict_block_usage.php" );
 require_once( __DIR__ . "/functions/lazyblocks.php" );
 
 /* Improve the Eventbrite markup output with some awful regexing */
