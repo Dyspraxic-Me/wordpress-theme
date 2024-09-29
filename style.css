@@ -376,7 +376,6 @@ header {
 		font-size: inherit;
 		display: inline-block;
 		padding: var(--button-padding);
-		white-space: nowrap;
 		border: var(--button-border-width) solid;
 		border-bottom-left-radius: var(--border-bottom-left-radius);
 		border-bottom-right-radius: var(--border-bottom-right-radius);
