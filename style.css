@@ -211,7 +211,8 @@ hr {
 
 header {
 	background: var(--header-background-color);
-	padding-block: var(--space-2xs);
+	padding-top: var(--space-xs);
+	padding-bottom: calc(6px + var(--space-xs));
 	margin-bottom: var(--page-padding-top);
 
 	.container {
