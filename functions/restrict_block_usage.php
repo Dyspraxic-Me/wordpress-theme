@@ -106,8 +106,8 @@ function allowed_block_types( $allowed_block_types, $block_editor_context ) {
 
 	$filtered_blocks = array();
 	foreach ( $allowed_block_types as $block ) {
-		// If the block is a lazyblock it's custom so just allow it.
-		if ( str_starts_with( $block, 'lazyblock' ) ) {
+		// If the block is not core assume it's custom so just allow it.
+		if ( !str_contains( $block, "core" ) ) {
 			$filtered_blocks[] = $block;
 		} elseif ( in_array( $block, $allowed_blocks, true ) ) {
 			$filtered_blocks[] = $block;
