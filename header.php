@@ -10,6 +10,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<a id="top"></a>
 <script>
 	const colorScheme = window.localStorage.getItem("color-scheme");
 	if (colorScheme) document.documentElement.style.colorScheme = colorScheme;

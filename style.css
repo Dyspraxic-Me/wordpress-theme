@@ -58,6 +58,8 @@ Tags:
 	--page-padding-inline: var(--space-m);
 	--page-padding-top: var(--space-xl);
 	--page-padding-bottom: var(--space-2xl);
+	--back-to-top-spacing: var(--space-l);
+
 	--measure: 60ch;
 	--border-radius: 0.4em;
 	--border-radius-offset: calc(3 * var(--border-radius));
@@ -102,6 +104,10 @@ Tags:
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+html {
+	scroll-padding: var(--space-s);
 }
 
 body {
@@ -410,13 +416,13 @@ form {
 }
 
 main {
-	--prose-spacing: var(--space-s);
+	--prose-spacing: var(--space-m);
 
 	img {
 		max-width: 100%;
 	}
 
-	p {
+	> p {
 		max-width: var(--measure);
 
 		&:empty {
@@ -440,15 +446,22 @@ main {
 			--border-bottom-right-radius: var(--border-radius);
 		}
 	}
+
+	h1:not([class]) {
+		margin-bottom: var(--space-l);
+	}
+
+	.wp-block-media-text {
+		margin-bottom: var(--prose-spacing);
+	}
+
+	* + .wp-block-heading {
+		margin-top: var(--space-l);
+	}
 }
 
-/* figure {
-	padding: 0;
-	margin:0;
-} */
-
 footer {
-	margin-top: var(--page-padding-bottom);
+	margin-top: calc(var(--page-padding-bottom) - var(--back-to-top-spacing));
 	padding-top: var(--space-m);
 	padding-bottom: var(--space-l);
 	background: var(--footer-background-color);
@@ -608,6 +621,26 @@ color-scheme-select {
 		border-bottom-right-radius: var(--border-bottom-right-radius);
 		border-top-left-radius: var(--border-top-left-radius);
 		border-top-right-radius: var(--border-top-right-radius);
+	}
+}
+
+.back-to-top {
+	display: inline-flex;
+	align-items: center;
+	margin-top: var(--space-l);
+	gap: 0.4em;
+	border-bottom-left-radius: var(--border-bottom-left-radius);
+	border-bottom-right-radius: var(--border-bottom-right-radius);
+	border-top-left-radius: var(--border-top-left-radius);
+	border-top-right-radius: var(--border-top-right-radius);
+
+	&,
+	&:visited {
+		color: var(--link-color);
+	}
+
+	svg {
+		height: 1em;
 	}
 }
 
