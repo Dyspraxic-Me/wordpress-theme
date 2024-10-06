@@ -634,7 +634,7 @@ color-scheme-select {
 .back-to-top {
 	display: inline-flex;
 	align-items: center;
-	margin-top: var(--space-l);
+	margin-top: var(--back-to-top-spacing);
 	gap: 0.4em;
 	border-bottom-left-radius: var(--border-bottom-left-radius);
 	border-bottom-right-radius: var(--border-bottom-right-radius);
