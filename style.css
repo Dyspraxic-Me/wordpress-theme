@@ -805,6 +805,7 @@ color-scheme-select {
 	a,
 	button,
 	input[type="submit"] {
+		cursor: pointer;
 		font-size: inherit;
 		display: inline-block;
 		padding: var(--button-padding);
