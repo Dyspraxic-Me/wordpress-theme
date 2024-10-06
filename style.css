@@ -50,9 +50,12 @@ Tags:
 	--light-color: var(--white);
 
 	--text-color: light-dark(var(--dark-color), var(--light-color));
-	--background-color: light-dark(var(--light-color), var(--dark-color));
 	--accent-color: light-dark(var(--purple), var(--light-purple));
 	--link-color: light-dark(var(--blue), var(--light-blue));
+	--background-color: light-dark(
+		var(--light-color),
+		color-mix(in srgb, var(--accent-color) 1%, hsl(from var(--dark-color) h s calc(l / 1.1)))
+	);
 
 	--page-width: 1000px;
 	--page-padding-inline: var(--space-m);
@@ -90,12 +93,20 @@ Tags:
 	--link-button-border-color: color-mix(in srgb, var(--white) 15%, var(--button-background-color));
 
 	--heading-color: var(--accent-color);
-	--header-background-color: color-mix(in srgb, var(--accent-color) 10%, var(--background-color));
+	--header-background-color: light-dark(
+		color-mix(in srgb, var(--accent-color) 10%, var(--light-color)),
+		color-mix(in srgb, var(--accent-color) 1%, hsl(from var(--dark-color) h s calc(l / 1.25)))
+	);
 	--footer-background-color: var(--header-background-color);
-	--section-background-color: color-mix(in srgb, var(--accent-color) 4%, var(--background-color));
-	--event-background-color: color-mix(in srgb, var(--accent-color) 6%, var(--background-color));
+
+	--section-background-color: light-dark(
+		color-mix(in srgb, var(--accent-color) 4%, var(--light-color)),
+		color-mix(in srgb, var(--accent-color) 1%, hsl(from var(--dark-color) h s calc(l / 1.175)))
+	);
+	--event-background-color: var(--section-background-color);
 
 	--horizontal-rule-color: color-mix(in srgb, var(--accent-color), transparent 80%);
+	--section-image-background-color: var(--horizontal-rule-color);
 	--blockquote-border-color: var(--horizontal-rule-color);
 	--quote-color: color-mix(in srgb, var(--accent-color) 50%, var(--background-color));
 }
@@ -345,9 +356,8 @@ header {
 		pointer-events: none;
 		user-select: none;
 		position: absolute;
-		opacity: 0.4;
 
-		background: var(--accent-color);
+		background: var(--section-image-background-color);
 		height: 100%;
 		width: 100%;
 		top: var(--overspill-size);
@@ -429,7 +439,7 @@ main {
 		max-width: 100%;
 	}
 
-	> p {
+	p {
 		max-width: var(--measure);
 
 		&:empty {
