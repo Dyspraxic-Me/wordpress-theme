@@ -44,3 +44,30 @@ class ColorSchemeSelect extends HTMLElement {
   }
 }
 customElements.define("color-scheme-select", ColorSchemeSelect);
+
+class BackToTop extends HTMLElement {
+  constructor() {
+    super();
+    this.$link = null;
+  }
+
+  connectedCallback() {
+    this.$link = this.querySelector("a");
+    this.$link.addEventListener("click", this.handleClick);
+  }
+
+  disconnectedCallback() {
+    this.$link.removeEventListener("click", this.handleClick);
+  }
+
+  handleClick(event) {
+    const { hash } = new URL(event.target.href);
+    const $target = document.querySelector(hash);
+    if (!$target) {
+      return;
+    }
+    $target.scrollIntoView();
+    event.preventDefault();
+  }
+}
+customElements.define("back-to-top", BackToTop);
