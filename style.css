@@ -34,6 +34,7 @@ Tags:
 	--space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
 
 	--width-1: 2px;
+	--width-2: 4px;
 
 	--black: #222;
 	--white: #fdfdfd;
@@ -616,10 +617,12 @@ color-scheme-select {
 
 	li:not(:last-child) {
 		&::after {
-			content: "\2022";
-			color: var(--horizontal-rule-color);
-			font-size: 0.6em;
+			content: "";
 			margin-left: calc(var(--social-gap) - 1ch);
+			height: var(--width-2);
+			width: var(--width-2);
+			background: var(--horizontal-rule-color);
+			border-radius: 50%;
 		}
 	}
 
