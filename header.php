@@ -17,7 +17,7 @@
 </script>
 <?php wp_body_open(); ?>
 	<!-- Inline SVG sprite -->
-	<svg aria-hidden="true" style="position: absolute; height: 0: width: 0;">
+	<svg aria-hidden="true" style="position: absolute; height: 0; width: 0;">
 		<clipPath id="squiggle-bottom" clipPathUnits="objectBoundingBox">
 			<path d="M0,0 v1 c0.043,-0.04,0.087,0.014,0.13,-0.05 c0.045,0.02,0.089,0.008,0.133,0.019 c0.077,0.016,0.153,-0.034,0.23,0.002 c0.038,0.003,0.077,-0.038,0.116,-0.01 c0.082,0.013,0.185,0.025,0.245,0.003 c0.06,-0.023,0.101,0.008,0.108,0.015 c0.007,0.007,0.026,-0.01,0.037,-0.025 V0 H0"></path>
 		</clipPath>
