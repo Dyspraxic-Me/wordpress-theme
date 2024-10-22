@@ -50,3 +50,5 @@ add_action('wp_head', function () {
 add_action('wp_footer', function () {
 	ob_end_flush();
 });
+
+require_once( __DIR__ . "/functions/subnavigation.php" );

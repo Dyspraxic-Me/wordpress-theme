@@ -46,11 +46,37 @@
 			</a>
 			<nav>
 				<?php wp_nav_menu([
+					'depth' => 1,
 					'theme_location' => 'nav',
 					'menu_id'        => 'nav',
 				]); ?>
 			</nav>
 		</div>
 	</header>
+	<?php
+	?>
+	<?php
+		$submenu_items = get_subnavigation('nav');
+		if( !empty( $submenu_items ) ):
+	?>
+		<nav class="subnavigation">
+			<div class="container">
+				<ul class="menu">
+					<?php foreach( $submenu_items as $submenu_item ): ?>
+						<li class="menu-item">
+							<a
+								href="<?php echo $submenu_item->url; ?>"
+								<?php if ($submenu_item->current) { ?>
+									aria-current="page"
+								<?php } ?> 
+							>
+								<?php echo $submenu_item->title; ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</nav>
+	<?php endif; ?>
 	<main id="content">
 		<div class="container">
