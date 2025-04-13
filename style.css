@@ -15,7 +15,7 @@ Tags:
 	color-scheme: light dark;
 
 	/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1000,20,1.25,5,0,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-	--size--1: clamp(1rem, 0.8824rem + 0.5882vw, 1.25rem);
+	--size--1: clamp(1rem, 0.8824rem + 0.3529vw, 1.25rem);
 	--size-0: clamp(1.125rem, 1.0662rem + 0.2941vw, 1.25rem);
 	--size-1: clamp(1.35rem, 1.2794rem + 0.3529vw, 1.5rem);
 	--size-2: clamp(1.62rem, 1.5353rem + 0.4235vw, 1.8rem);
@@ -37,6 +37,7 @@ Tags:
 	--width-2: 4px;
 
 	--black: #222;
+	--dark-gray: #444;
 	--white: #fdfdfd;
 	--blue: #005bbe;
 	--light-blue: lightblue;
@@ -51,6 +52,7 @@ Tags:
 	--light-color: var(--white);
 
 	--text-color: light-dark(var(--dark-color), var(--light-color));
+	--text-secondary-color: light-dark(var(--dark-gray), var(--gray));
 	--accent-color: light-dark(var(--purple), var(--light-purple));
 	--link-color: light-dark(var(--blue), var(--light-blue));
 	--background-color: light-dark(
@@ -492,6 +494,59 @@ main {
 	}
 }
 
+/**
+ * Post summaries
+ **/
+.post {
+	margin-bottom: var(--space-l);
+}
+.post-title {
+	margin-bottom: var(--space-2xs);
+}
+.post-title--summary {
+	font-size: var(--size-2);
+	+ .post-meta {
+		font-size: var(--size--1);
+		margin-bottom: var(--space-xs);
+	}
+}
+.post-meta {
+	color: var(--text-secondary-color);
+	margin-bottom: var(--prose-spacing);
+}
+.post-excerpt {
+	margin-bottom: var(--space-3xs);
+	& p {
+		margin: 0;
+	}
+}
+.post-read-more-link {
+	color: var(--link-color);
+}
+.post-rule {
+	margin-top: var(--space-xl);
+	margin-bottom: var(--space-s);
+}
+.post-navigation {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-2xl);
+}
+.post-navigation__next,
+.post-navigation__previous {
+	a {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.3em;
+		svg {
+			flex-shrink: 0;
+		}
+	}
+}
+.post-navigation__next:not(:first-child) {
+	text-align: right;
+}
+
 footer {
 	margin-top: calc(var(--page-padding-bottom) - var(--back-to-top-spacing));
 	padding-top: var(--space-m);
@@ -656,6 +711,16 @@ color-scheme-select {
 		border-top-left-radius: var(--border-top-left-radius);
 		border-top-right-radius: var(--border-top-right-radius);
 	}
+}
+
+.back-to-link {
+	a {
+		display: inline-flex;
+		gap: 0.3em;
+		align-items: center;
+	}
+	margin-top: -1em;
+	margin-bottom: var(--prose-spacing);
 }
 
 .back-to-top {
