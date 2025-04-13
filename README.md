@@ -9,7 +9,7 @@ WordPress theme for [Dyspraxic Me](https://dyspraxic.me.uk).
 
 ## How to develop locally
 
-1. Pull the repository using `git clone git@github.com:NickColley/dyspraxic-me-wordpress-theme.git`.
+1. Pull the repository using `git clone git@github.com:Dyspraxic-Me/wordpress-theme.git`.
 1. Link this theme into your existing WordPress installation using `ln -s /path/to/this/theme /path/to/wp-content/themes`.
 1. Login to your WordPress admin
     1. check the Lazy Blocks plugin is installed.
