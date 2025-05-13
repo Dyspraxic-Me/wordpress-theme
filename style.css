@@ -286,6 +286,7 @@ header {
 	margin: 0;
 	padding: 0;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: var(--space-xs);
 
@@ -311,11 +312,6 @@ header {
 			text-decoration-thickness: var(--text-decoration-thickness-bold);
 			--focus-width: var(--focus-width-bold);
 		}
-	}
-}
-@media screen and (max-width: 500px) {
-	.menu {
-		flex-wrap: wrap;
 	}
 }
 .subnavigation {
@@ -672,6 +668,7 @@ color-scheme-select {
 .socials {
 	--social-gap: 0.8rem;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: start;
 	gap: var(--social-gap);
 	list-style: none;
