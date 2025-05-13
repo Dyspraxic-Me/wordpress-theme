@@ -332,10 +332,6 @@ header + .subnavigation {
 		margin-top: var(--space-xl);
 	}
 
-	&:last-of-type {
-		padding-bottom: 0;
-	}
-
 	&:nth-of-type(odd) {
 		background: var(--section-background-color);
 	}
