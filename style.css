@@ -410,6 +410,7 @@ form {
 		color: var(--input-text-color);
 	}
 
+	textarea,
 	input:not([type="submit"]) {
 		display: block;
 		font-size: inherit;
@@ -908,6 +909,7 @@ header::before {
 }
 
 .eaw-booknow,
+.wpforms-submit-container,
 /* Display Eventbrite Events Plugin */
 .wp-block-button {
 	a,
