@@ -8,7 +8,7 @@
         </a>
     </div>
     <h1 class="post-title"><?php the_title(); ?></h1>
-    <div class="post-meta">13th April 2025, Nick Colley</div>
+    <div class="post-meta"><?php the_time('jS F Y') ?>, <?php echo get_the_author_meta('display_name', get_post_field('post_author')); ?></div>
     <?php the_content(); ?>
     <?php
         $previous_post = get_adjacent_post(false, '', true);
