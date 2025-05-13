@@ -800,10 +800,14 @@ header::before {
 
 .eaw-ulx {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
 	gap: var(--space-s);
 	margin-bottom: var(--space-l);
 	max-width: calc(0.8 * var(--page-width));
+}
+@media screen and (min-width: 600px) {
+	.eaw-ulx {
+		grid-template-columns: repeat(2, auto);
+	}
 }
 
 .eaw-content-wrap {
