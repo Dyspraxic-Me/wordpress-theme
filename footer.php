@@ -42,7 +42,7 @@
                     <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5103908/charity-overview">Registered Charity Number 1175961</a>
                 </li>
                 <li>
-                    Free Charity Hosting by <a href="https://www.kualo.com/free-charity-hosting">Kualo</a>
+                    <a href="https://www.kualo.com/free-charity-hosting">Free Charity Hosting by Kualo</a>
                 </li>
             </ul>
         </div>
