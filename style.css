@@ -990,6 +990,12 @@ header::before {
 	border-top-right-radius: var(--border-top-right-radius);
 }
 
+/* WP Forms Plugin */
+.wpforms-field {
+	/* Stops focus state from being clipped on small screens */
+	overflow-x: initial !important;
+}
+
 /* Utilities */
 .visually-hidden,
 .visually-hidden-focusable:not(:active):not(:focus) {
