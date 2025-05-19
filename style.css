@@ -504,7 +504,9 @@ main {
 	margin-bottom: var(--space-l);
 }
 .post-title {
-	margin-bottom: var(--space-2xs);
+	margin-bottom: var(--space-3xs);
+	line-height: 1.5em;
+	--focus-offset: 1px;
 }
 .post-title--summary {
 	font-size: var(--size-2);
