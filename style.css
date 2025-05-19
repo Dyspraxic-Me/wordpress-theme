@@ -906,6 +906,9 @@ header::before {
 	padding: 0;
 }
 
+/**
+ * Buttons
+ **/
 .eaw-booknow,
 .wpforms-submit-container,
 /* Display Eventbrite Events Plugin */
@@ -978,6 +981,33 @@ header::before {
 		&:active {
 			background: color-mix(in srgb, var(--dark-color) 20%, var(--button-background-color));
 		}
+	}
+}
+.wp-element-button {
+	--focus-color: var(--button-background-color);
+	cursor: pointer;
+	font-size: inherit;
+	display: inline-block;
+	padding: var(--button-padding);
+	border: var(--button-border-width) solid;
+	border-bottom-left-radius: var(--border-bottom-left-radius);
+	border-bottom-right-radius: var(--border-bottom-right-radius);
+	border-top-left-radius: var(--border-top-left-radius);
+	border-top-right-radius: var(--border-top-right-radius);
+	background: var(--button-background-color);
+	border-color: var(--button-background-color);
+
+	&,
+	&:visited {
+		color: var(--button-text-color);
+	}
+
+	&:hover {
+		background: color-mix(in srgb, var(--dark-color) 10%, var(--button-background-color));
+	}
+
+	&:active {
+		background: color-mix(in srgb, var(--dark-color) 20%, var(--button-background-color));
 	}
 }
 
