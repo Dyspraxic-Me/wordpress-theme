@@ -608,8 +608,8 @@ color-scheme-select {
 	.field-group {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 0.5em;
-		margin-top: 0.1em;
+		margin-top: 0.4em;
+		justify-content: space-between;
 	}
 
 	.field {
